@@ -1,0 +1,15 @@
+Getting Started
+===============
+
+Prerequisites
+-------------
+
+The TOPTICA Python Laser SDK requires at least Python 3.5 and the pyserial package.
+
+Installation
+------------
+
+Use the ``pip`` command for installation::
+
+    $ pip install toptica_lasersdk
+

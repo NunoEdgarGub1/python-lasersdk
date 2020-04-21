@@ -1,0 +1,31 @@
+Get Connected with Your Laser
+=============================
+
+To connect to a laser device via Ethernet or USB/RS232 an instance of the :py:class:`toptica.lasersdk.client.Client` class is required. The instantiation operation of the :py:class:`toptica.lasersdk.client.Client` class takes a :py:class:`toptica.lasersdk.asyncio.connection.Connection` object as its argument.
+
+The class :py:class:`toptica.lasersdk.asyncio.connection.Connection` is an abstract class from which the two classes :py:class:`toptica.lasersdk.asyncio.connection.NetworkConnection` and :py:class:`toptica.lasersdk.asyncio.connection.SerialConnection` are derived.
+
+.. note:: Python 3.7 changed ``async`` and ``await`` to reserved keywords. Since version 2.0 of the SDK every module starting with ``toptica.lasersdk.async.*`` has therefore been renamed to ``toptica.lasersdk.asyncio.*``.
+
+The instantiation operation of :py:class:`toptica.lasersdk.asyncio.connection.NetworkConnection` requires a host identifier as first argument. This can be an IP address, a symbolic hostname that can be resolved using the domain name system (DNS), or a system label that can be resolved by the DeCoP discovery service. The latter is a custom device label that can typically be set by the end user using the ``system-label`` DeCoP parameter.
+
+Network example:
+
+.. code-block:: python
+
+    from toptica.lasersdk.client import NetworkConnection
+    
+    conn1 = NetworkConnection('10.0.0.2')
+    conn2 = NetworkConnection('laser.mycompany.com')
+    conn3 = NetworkConnection('My Laser')
+
+The instantiation operation of :py:class:`toptica.lasersdk.asyncio.connection.SerialConnection` requires a serial port identifier as first argument.
+
+Serial port example:
+
+.. code-block:: python
+
+    from toptica.lasersdk.client import SerialConnection
+
+    conn1 = SerialConnection('COM1')         # On Windows
+    conn2 = SerialConnection('/dev/ttyUSB0') # On Linux
